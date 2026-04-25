@@ -110,7 +110,8 @@ class BarangResource extends Resource
                     ->exporter(BarangExporter::class)
                     ->formats([
                         ExportFormat::Xlsx,
-                    ]),
+                    ])
+                    ->after(fn($livewire) => $livewire->redirect(request()->header('referer') ?? '/admin/barangs', navigate: false)),
             ])
             ->filters([])
             ->actions([
