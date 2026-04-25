@@ -58,7 +58,7 @@ class BarangResource extends Resource
                 ->numeric()
                 ->minValue(0)
                 ->live(onBlur: true)
-                ->afterStateUpdated(fn (Set $set, Get $get) => static::updateHargaTotal($set, $get))
+                ->afterStateUpdated(fn(Set $set, Get $get) => static::updateHargaTotal($set, $get))
                 ->required(),
 
             TextInput::make('harga_per_item')
@@ -73,7 +73,7 @@ class BarangResource extends Resource
 
                     $component->state((int) ($record->harga / $record->stok));
                 })
-                ->afterStateUpdated(fn (Set $set, Get $get) => static::updateHargaTotal($set, $get))
+                ->afterStateUpdated(fn(Set $set, Get $get) => static::updateHargaTotal($set, $get))
                 ->required(),
 
             TextInput::make('harga')
@@ -95,7 +95,7 @@ class BarangResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->label('ID Barang')->sortable(),
+                TextColumn::make('no')->label('No')->rowIndex(),
                 TextColumn::make('kode_barang')->label('Kode Barang')->searchable()->sortable(),
                 TextColumn::make('nama_barang')->label('Nama Barang')->searchable()->sortable(),
                 TextColumn::make('kategori')->label('Kategori')->badge(),
