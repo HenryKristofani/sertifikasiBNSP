@@ -2,8 +2,10 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\BarangExporter;
 use App\Filament\Resources\BarangResource\Pages;
 use App\Models\Barang;
+use Filament\Actions\Exports\Enums\ExportFormat;
 use Filament\Forms\Get;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
@@ -101,6 +103,14 @@ class BarangResource extends Resource
                 TextColumn::make('keterangan')->label('Keterangan')->wrap(),
                 TextColumn::make('created_at')->label('Tanggal Dibuat')->dateTime()->sortable(),
                 TextColumn::make('updated_at')->label('Tanggal Diedit')->dateTime()->sortable(),
+            ])
+            ->headerActions([
+                Tables\Actions\ExportAction::make()
+                    ->label('Ekspor Excel')
+                    ->exporter(BarangExporter::class)
+                    ->formats([
+                        ExportFormat::Xlsx,
+                    ]),
             ])
             ->filters([])
             ->actions([
