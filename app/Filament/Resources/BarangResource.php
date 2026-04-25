@@ -34,6 +34,11 @@ class BarangResource extends Resource
     public static function form(Form $form): Form
     {
         return $form->schema([
+            TextInput::make('kode_barang')
+                ->label('Kode Barang')
+                ->maxLength(255)
+                ->required(),
+
             TextInput::make('nama_barang')
                 ->label('Nama Barang')
                 ->required(),
@@ -91,6 +96,7 @@ class BarangResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->label('ID Barang')->sortable(),
+                TextColumn::make('kode_barang')->label('Kode Barang')->searchable()->sortable(),
                 TextColumn::make('nama_barang')->label('Nama Barang')->searchable()->sortable(),
                 TextColumn::make('kategori')->label('Kategori')->badge(),
                 TextColumn::make('stok')->label('Stok')->sortable(),
