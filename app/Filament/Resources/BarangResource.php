@@ -61,11 +61,14 @@ class BarangResource extends Resource
     {
         return $table
             ->columns([
+                TextColumn::make('id')->label('ID Barang')->sortable(),
                 TextColumn::make('nama_barang')->label('Nama Barang')->searchable()->sortable(),
                 TextColumn::make('kategori')->label('Kategori')->badge(),
                 TextColumn::make('stok')->label('Stok')->sortable(),
                 TextColumn::make('harga')->label('Harga')->money('IDR')->sortable(),
-                TextColumn::make('created_at')->label('Ditambahkan')->date()->sortable(),
+                TextColumn::make('keterangan')->label('Keterangan')->wrap(),
+                TextColumn::make('created_at')->label('Tanggal Dibuat')->dateTime()->sortable(),
+                TextColumn::make('updated_at')->label('Tanggal Diedit')->dateTime()->sortable(),
             ])
             ->filters([])
             ->actions([
