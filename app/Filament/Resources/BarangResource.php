@@ -47,9 +47,6 @@ class BarangResource extends Resource
                 ->label('Kategori')
                 ->options([
                     'Elektronik'  => 'Elektronik',
-                    'ATK'         => 'ATK',
-                    'Furniture'   => 'Furniture',
-                    'Lainnya'     => 'Lainnya',
                 ])
                 ->required(),
 
